@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Hero} from "../heroClasses/hero";
 import {HeroService} from "../hero-service/hero.service";
 
+
 @Component({
   selector: 'app-heroes',
   templateUrl: './heroes.component.html',
@@ -11,27 +12,13 @@ import {HeroService} from "../hero-service/hero.service";
  *
  */
 export class HeroesComponent implements OnInit {
-
-  public heroes: Hero[];
-
-
-  /**This variable is used to store the selected hero from the list by the player */
-  public selectedHero: Hero;
-
-  constructor(private heroService: HeroService) {
-  }
-
-  /**Function used to select a hero chosen by the player */
-  public onSelect(hero: Hero) {
-    this.selectedHero = hero;
-  }
+  heroes: Hero[];
 
   /**
    *
+   * @param heroService
    */
-  public getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes);
+  constructor(private heroService: HeroService) {
   }
 
   /**
@@ -41,4 +28,11 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
+  /**
+   *
+   */
+  public getHeroes(): void {
+    this.heroService.getHeroes()
+      .subscribe(heroes => this.heroes = heroes);
+  }
 }
