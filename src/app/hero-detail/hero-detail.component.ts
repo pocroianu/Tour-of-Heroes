@@ -47,4 +47,15 @@ export class HeroDetailComponent implements OnInit {
   public goBack(): void {
     this.location.back();
   }
+
+  /**
+   * Save the new hero's name to hte db.
+   */
+  public save(): void {
+    this.heroService.updateHero(this.hero)
+      .subscribe(() => this.goBack());
+
+  }
+
+
 }
